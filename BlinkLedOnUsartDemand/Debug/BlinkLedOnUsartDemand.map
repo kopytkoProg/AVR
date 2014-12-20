@@ -2,22 +2,30 @@ Archive member included because of file (symbol)
 
 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_exit.o)
                               d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr4/crtm88.o (exit)
-d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_copy_data.o)
-                              BlinkLedOnUsartDemand.o (__do_copy_data)
 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_clear_bss.o)
                               BlinkLedOnUsartDemand.o (__do_clear_bss)
 
 Allocating common symbols
 Common symbol       size              file
 
-usart_bufor         0x20              BlinkLedOnUsartDemand.o
-usart_bufor_ind     0x2               BlinkLedOnUsartDemand.o
+usart_tx_bufor      0x20              BlinkLedOnUsartDemand.o
+usart_rx_bufor_ind  0x2               BlinkLedOnUsartDemand.o
+usart_tx_bufor_ind  0x2               BlinkLedOnUsartDemand.o
+usart_rx_bufor      0x20              BlinkLedOnUsartDemand.o
 
 Discarded input sections
 
  .bss           0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr4/crtm88.o
  .text          0x00000000        0x0 BlinkLedOnUsartDemand.o
  .bss           0x00000000        0x0 BlinkLedOnUsartDemand.o
+ .text.clear_tx_buffer
+                0x00000000       0x12 BlinkLedOnUsartDemand.o
+ .text.cp_to_buffer
+                0x00000000       0x10 BlinkLedOnUsartDemand.o
+ .text.send_text
+                0x00000000       0x24 BlinkLedOnUsartDemand.o
+ .text.reset_timer0
+                0x00000000        0x4 BlinkLedOnUsartDemand.o
  .text          0x00000000        0x0 USART/USART.o
  .bss           0x00000000        0x0 USART/USART.o
  .text          0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_exit.o)
@@ -35,21 +43,6 @@ Discarded input sections
                 0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_exit.o)
  .text.libgcc.fixed
                 0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_exit.o)
- .text          0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_copy_data.o)
- .bss           0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_copy_data.o)
- .text.libgcc.mul
-                0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_copy_data.o)
- .text.libgcc.div
-                0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_copy_data.o)
- .text.libgcc   0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_copy_data.o)
- .text.libgcc.prologue
-                0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_copy_data.o)
- .text.libgcc.builtins
-                0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_copy_data.o)
- .text.libgcc.fmul
-                0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_copy_data.o)
- .text.libgcc.fixed
-                0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_copy_data.o)
  .text          0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_clear_bss.o)
  .bss           0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_clear_bss.o)
  .text.libgcc.mul
@@ -183,7 +176,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x1ac
+.text           0x00000000      0x3a0
  *(.vectors)
  .vectors       0x00000000       0x34 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr4/crtm88.o
                 0x00000000                __vector_default
@@ -222,10 +215,8 @@ END GROUP
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x00000040       0x16 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_copy_data.o)
-                0x00000040                __do_copy_data
- .init4         0x00000056       0x10 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_clear_bss.o)
-                0x00000056                __do_clear_bss
+ .init4         0x00000040       0x10 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_clear_bss.o)
+                0x00000040                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -236,58 +227,74 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000066        0x4 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr4/crtm88.o
+ .init9         0x00000050        0x4 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr4/crtm88.o
  *(.init9)
  *(.text)
- .text          0x0000006a        0x2 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr4/crtm88.o
-                0x0000006a                __vector_22
-                0x0000006a                __vector_1
-                0x0000006a                __vector_24
-                0x0000006a                __vector_12
-                0x0000006a                __bad_interrupt
-                0x0000006a                __vector_6
-                0x0000006a                __vector_3
-                0x0000006a                __vector_23
-                0x0000006a                __vector_25
-                0x0000006a                __vector_11
-                0x0000006a                __vector_13
-                0x0000006a                __vector_17
-                0x0000006a                __vector_7
-                0x0000006a                __vector_5
-                0x0000006a                __vector_4
-                0x0000006a                __vector_9
-                0x0000006a                __vector_2
-                0x0000006a                __vector_21
-                0x0000006a                __vector_15
-                0x0000006a                __vector_8
-                0x0000006a                __vector_14
-                0x0000006a                __vector_10
-                0x0000006a                __vector_16
-                0x0000006a                __vector_20
-                0x0000006c                . = ALIGN (0x2)
+ .text          0x00000054        0x2 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr4/crtm88.o
+                0x00000054                __vector_22
+                0x00000054                __vector_1
+                0x00000054                __vector_24
+                0x00000054                __vector_12
+                0x00000054                __bad_interrupt
+                0x00000054                __vector_6
+                0x00000054                __vector_3
+                0x00000054                __vector_23
+                0x00000054                __vector_25
+                0x00000054                __vector_11
+                0x00000054                __vector_13
+                0x00000054                __vector_17
+                0x00000054                __vector_7
+                0x00000054                __vector_5
+                0x00000054                __vector_4
+                0x00000054                __vector_9
+                0x00000054                __vector_2
+                0x00000054                __vector_21
+                0x00000054                __vector_15
+                0x00000054                __vector_8
+                0x00000054                __vector_10
+                0x00000054                __vector_16
+                0x00000054                __vector_20
+                0x00000056                . = ALIGN (0x2)
  *(.text.*)
- .text.clear_buffer
-                0x0000006c       0x12 BlinkLedOnUsartDemand.o
-                0x0000006c                clear_buffer
+ .text.crc      0x00000056       0x1e BlinkLedOnUsartDemand.o
+                0x00000056                crc
  .text.usart_inicjuj
-                0x0000007e       0x22 BlinkLedOnUsartDemand.o
-                0x0000007e                usart_inicjuj
- .text.__vector_18
-                0x000000a0       0x14 BlinkLedOnUsartDemand.o
-                0x000000a0                __vector_18
+                0x00000074       0x22 BlinkLedOnUsartDemand.o
+                0x00000074                usart_inicjuj
+ .text.can_send
+                0x00000096       0x1a BlinkLedOnUsartDemand.o
+                0x00000096                can_send
  .text.__vector_19
-                0x000000b4       0x8e BlinkLedOnUsartDemand.o
-                0x000000b4                __vector_19
- .text.cp_to_buffer
-                0x00000142       0x10 BlinkLedOnUsartDemand.o
-                0x00000142                cp_to_buffer
- .text.main     0x00000152       0x56 BlinkLedOnUsartDemand.o
-                0x00000152                main
-                0x000001a8                . = ALIGN (0x2)
+                0x000000b0       0x84 BlinkLedOnUsartDemand.o
+                0x000000b0                __vector_19
+ .text.send_buffer
+                0x00000134       0x10 BlinkLedOnUsartDemand.o
+                0x00000134                send_buffer
+ .text.send_data
+                0x00000144       0x3e BlinkLedOnUsartDemand.o
+                0x00000144                send_data
+ .text.init_timer0
+                0x00000182       0x16 BlinkLedOnUsartDemand.o
+                0x00000182                init_timer0
+ .text.main     0x00000198       0xd2 BlinkLedOnUsartDemand.o
+                0x00000198                main
+ .text.enable_timer0
+                0x0000026a        0x8 BlinkLedOnUsartDemand.o
+                0x0000026a                enable_timer0
+ .text.disable_timer0
+                0x00000272        0x8 BlinkLedOnUsartDemand.o
+                0x00000272                disable_timer0
+ .text.__vector_18
+                0x0000027a       0xd0 BlinkLedOnUsartDemand.o
+                0x0000027a                __vector_18
+ .text.__vector_14
+                0x0000034a       0x52 BlinkLedOnUsartDemand.o
+                0x0000034a                __vector_14
+                0x0000039c                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000001a8        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_exit.o)
-                0x000001a8                _exit
-                0x000001a8                exit
+ .fini9         0x0000039c        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_exit.o)
+                0x0000039c                _exit
+                0x0000039c                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -306,47 +313,52 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000001a8        0x4 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_exit.o)
+ .fini0         0x0000039c        0x4 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_exit.o)
  *(.fini0)
-                0x000001ac                _etext = .
+                0x000003a0                _etext = .
 
-.data           0x00800100       0x10 load address 0x000001ac
+.data           0x00800100        0x0 load address 0x000003a0
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr4/crtm88.o
  .data          0x00800100        0x0 BlinkLedOnUsartDemand.o
  .data          0x00800100        0x0 USART/USART.o
  .data          0x00800100        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_exit.o)
- .data          0x00800100        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_copy_data.o)
  .data          0x00800100        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_clear_bss.o)
  *(.data*)
  *(.rodata)
  *(.rodata*)
- .rodata.str1.1
-                0x00800100       0x10 BlinkLedOnUsartDemand.o
  *(.gnu.linkonce.d*)
-                0x00800110                . = ALIGN (0x2)
-                0x00800110                _edata = .
-                0x00800110                PROVIDE (__data_end, .)
+                0x00800100                . = ALIGN (0x2)
+                0x00800100                _edata = .
+                0x00800100                PROVIDE (__data_end, .)
 
-.bss            0x00800110       0x22
-                0x00800110                PROVIDE (__bss_start, .)
+.bss            0x00800100       0x46
+                0x00800100                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
+ .bss.recive_counter
+                0x00800100        0x1 BlinkLedOnUsartDemand.o
+                0x00800100                recive_counter
+ .bss.data_to_send
+                0x00800101        0x1 BlinkLedOnUsartDemand.o
+                0x00800101                data_to_send
  *(COMMON)
- COMMON         0x00800110       0x22 BlinkLedOnUsartDemand.o
-                0x00800110                usart_bufor
-                0x00800130                usart_bufor_ind
-                0x00800132                PROVIDE (__bss_end, .)
-                0x000001ac                __data_load_start = LOADADDR (.data)
-                0x000001bc                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800102       0x44 BlinkLedOnUsartDemand.o
+                0x00800102                usart_tx_bufor
+                0x00800122                usart_rx_bufor_ind
+                0x00800124                usart_tx_bufor_ind
+                0x00800126                usart_rx_bufor
+                0x00800146                PROVIDE (__bss_end, .)
+                0x000003a0                __data_load_start = LOADADDR (.data)
+                0x000003a0                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800132        0x0
-                0x00800132                PROVIDE (__noinit_start, .)
+.noinit         0x00800146        0x0
+                0x00800146                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00800132                PROVIDE (__noinit_end, .)
-                0x00800132                _end = .
-                0x00800132                PROVIDE (__heap_start, .)
+                0x00800146                PROVIDE (__noinit_end, .)
+                0x00800146                _end = .
+                0x00800146                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -406,40 +418,40 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0x48
+.debug_aranges  0x00000000       0x98
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x48 BlinkLedOnUsartDemand.o
+                0x00000000       0x98 BlinkLedOnUsartDemand.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0x26c
+.debug_info     0x00000000      0x4b1
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x26c BlinkLedOnUsartDemand.o
+ .debug_info    0x00000000      0x4b1 BlinkLedOnUsartDemand.o
 
-.debug_abbrev   0x00000000      0x1b3
+.debug_abbrev   0x00000000      0x1ee
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x1b3 BlinkLedOnUsartDemand.o
+ .debug_abbrev  0x00000000      0x1ee BlinkLedOnUsartDemand.o
 
-.debug_line     0x00000000      0x1ab
+.debug_line     0x00000000      0x25a
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000      0x1ab BlinkLedOnUsartDemand.o
- .debug_line    0x000001ab        0x0 USART/USART.o
+ .debug_line    0x00000000      0x25a BlinkLedOnUsartDemand.o
+ .debug_line    0x0000025a        0x0 USART/USART.o
 
-.debug_frame    0x00000000       0xc8
+.debug_frame    0x00000000      0x1ec
  *(.debug_frame)
- .debug_frame   0x00000000       0xc8 BlinkLedOnUsartDemand.o
+ .debug_frame   0x00000000      0x1ec BlinkLedOnUsartDemand.o
 
-.debug_str      0x00000000      0x1fd
+.debug_str      0x00000000      0x278
  *(.debug_str)
- .debug_str     0x00000000      0x1fd BlinkLedOnUsartDemand.o
-                                0x236 (size before relaxing)
- .debug_str     0x000001fd        0x0 USART/USART.o
+ .debug_str     0x00000000      0x278 BlinkLedOnUsartDemand.o
+                                0x2b1 (size before relaxing)
+ .debug_str     0x00000278        0x0 USART/USART.o
 
-.debug_loc      0x00000000      0x16e
+.debug_loc      0x00000000      0x4fb
  *(.debug_loc)
- .debug_loc     0x00000000      0x16e BlinkLedOnUsartDemand.o
+ .debug_loc     0x00000000      0x4fb BlinkLedOnUsartDemand.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -459,9 +471,9 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0x38
+.debug_ranges   0x00000000       0xa0
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x38 BlinkLedOnUsartDemand.o
+ .debug_ranges  0x00000000       0xa0 BlinkLedOnUsartDemand.o
 
 .debug_macro
  *(.debug_macro)

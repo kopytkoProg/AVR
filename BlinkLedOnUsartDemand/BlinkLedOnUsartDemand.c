@@ -52,7 +52,7 @@ int main(void)
 					PORTB &= ~(_BV(PB0));
 					//--------------------------------------------------------------
 					break;
-					case CMD_TOGLE_LED0:
+					case CMD_TOGGLE_LED0:
 					//--------------------------------------------------------------
 					PORTB ^= (_BV(PB0));
 					//--------------------------------------------------------------
@@ -162,30 +162,39 @@ void send_buffer(uint8_t byte_to_send)
 uint8_t recive_counter = 0;
 ISR(USART_RX_vect)
 {
-	usart_rx_bufor[usart_rx_bufor_ind++] = UDR0;
-	recive_counter++;
-	
-	if(recive_counter == 1)
-	{
-		reset_timer0();
-		enable_timer0();
+	if(recive_counter < RX_BUFFER_SIZE){
+		usart_rx_bufor[usart_rx_bufor_ind++] = UDR0;
+		recive_counter++;
+		
+		if(recive_counter == 1)
+		{
+			reset_timer0();
+			enable_timer0();
+		}
+		else if(recive_counter < 3)
+		{
+			reset_timer0();
+		}
+		else if(usart_rx_bufor_ind - 3 < usart_rx_bufor[MSG_DATA_LENGTH])		// Data
+		{
+			reset_timer0();
+		}
+		else if(usart_rx_bufor_ind - 4 < usart_rx_bufor[MSG_DATA_LENGTH])		// CRC
+		{
+			reset_timer0();
+		}
+		else																	//success
+		{
+			disable_timer0();
+			recive_counter = 0;
+		}
+		
 	}
-	else if(recive_counter < 3)
+	else																		// To many received data, it is error
 	{
-		reset_timer0();
-	}
-	else if(usart_rx_bufor_ind - 3 < usart_rx_bufor[MSG_DATA_LENGTH])		// Data
-	{
-		reset_timer0();
-	}
-	else if(usart_rx_bufor_ind - 4 < usart_rx_bufor[MSG_DATA_LENGTH])		// CRC
-	{
-		reset_timer0();
-	}
-	else																	//success
-	{
-		disable_timer0();
+		disable_timer0();														// Clear all data
 		recive_counter = 0;
+		usart_rx_bufor_ind = 0;													// Clear all data
 	}
 }
 //--------------------------------------------------------------
@@ -213,7 +222,7 @@ void reset_timer0(void)
 //--------------------------------------------------------------
 ISR (TIMER0_COMPA_vect)														// Failed transmission
 {
-	disable_timer0();														
+	disable_timer0();
 	recive_counter = 0;														// Clear All buffers
 	usart_rx_bufor_ind = 0;													// Clear All buffers
 	

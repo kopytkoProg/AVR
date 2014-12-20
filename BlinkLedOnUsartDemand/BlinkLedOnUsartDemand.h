@@ -21,7 +21,7 @@
 
 #define CMD_ENABLE_LED0		1		// No data
 #define CMD_DISABLE_LED0	2		// No data
-#define CMD_TOGLE_LED0		3		// No data
+#define CMD_TOGGLE_LED0		3		// No data
 #define CMD_TEXT			101		// No data
 
 // Fields of message

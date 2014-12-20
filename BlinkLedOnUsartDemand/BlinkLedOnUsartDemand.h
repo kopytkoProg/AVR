@@ -19,15 +19,18 @@
 
 // COMMANDS :
 
-#define CMD_ENABLE_LED0 1		// No data
-#define CMD_DISABLE_LED0 2		// No data
-#define CMD_TOGLE_LED0 3		// No data
+#define CMD_ENABLE_LED0		1		// No data
+#define CMD_DISABLE_LED0	2		// No data
+#define CMD_TOGLE_LED0		3		// No data
+#define CMD_TEXT			101		// No data
 
 // Fields of message
 
 #define MSG_ADDRESS 0
 #define MSG_COMMAND 1
 #define MSG_DATA_LENGTH 2
+
+
 //#define MSG_CRC 
 //=================================================================================================================================
 
@@ -55,6 +58,9 @@ void init_timer0(void);
 void enable_timer0(void);
 void disable_timer0(void);
 void reset_timer0(void);
+void send_data (char *s, uint8_t length);
+uint8_t crc (char *s, uint8_t length);
+
 
 
 volatile unsigned int usart_tx_bufor_ind;									//indeks bufora nadawania

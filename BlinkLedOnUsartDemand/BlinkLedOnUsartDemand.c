@@ -4,40 +4,38 @@
 * Created: 2014-12-19 15:30:15
 *  Author: michal
 */
+#include "BlinkLedOnUsartDemand.h"
 
-# define F_CPU 8000000UL
-//#include <stddef.h>
-#include <avr/io.h>
-#include <stdio.h>
-#include <avr/interrupt.h>
-#include <util/delay.h>
 
-//definiowanie parametrów transmisji za pomoc¹ makr zawartych w pliku
-//nag³ówkowym setbaud.h. Je¿eli wybierzesz prêdkoœæ, która nie bêdzie
-//mo¿liwa do realizacji otrzymasz ostrze¿enie:
-//#warning "Baud rate achieved is higher than allowed"
 
-#define BAUD 9600 //57600													//tutaj podaj ¿¹dan¹ prêdkoœæ transmisji
-#include <util/setbaud.h>													//linkowanie tego pliku musi byæ po zdefiniowaniu BAUD
 
-# define BUFFER_SIZE 32
-volatile unsigned int usart_bufor_ind;										//indeks bufora nadawania
-char usart_bufor[BUFFER_SIZE];												//bufor nadawania
+//--------------------------------------------------------------
 
-void clear_buffer(void)
+
+//--------------------------------------------------------------
+int main(void)
 {
-	for (int i = 0; i < BUFFER_SIZE; i++ ) usart_bufor[i] = 0;
+	
+
+	DDRB |= _BV(DDB0);														// set out PB0 (for diode)
+	
+	init_timer0();															// init timer
+	usart_inicjuj();														// initialize USART (RS-232)
+	sei();																	// Enables interrupts
+	
+	
+	while(1)
+	{
+		
+	}
 }
 //--------------------------------------------------------------
-uint8_t can_send(void)
-{
-	return (UCSR0A & (1<<UDRE0)) && !usart_bufor[0]);
-}
+//--------------------------------------------------------------
 //--------------------------------------------------------------
 void usart_inicjuj(void)
 {
 
-	// set computed by 'setbaud' values 
+	// set computed by 'setbaud' values
 	UBRR0H = UBRRH_VALUE;
 	UBRR0L = UBRRL_VALUE;
 	#if USE_2X
@@ -51,60 +49,111 @@ void usart_inicjuj(void)
 	// 8 bits
 	// 1 bit stop
 	// parity none
-	UCSR0B = (1<<TXEN0) | (1<<RXEN0); //| (1<<RXCIE0);
+	UCSR0B = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0);
 }
 //--------------------------------------------------------------
-ISR(USART_RX_vect)
+//--------------------------------------------------------------
+//--------------------------------------------------------------
+void clear_tx_buffer(void)
 {
-	//przerwanie generowane po odebraniu bajtu
+	for (int i = 0; i < TX_BUFFER_SIZE; i++ ) usart_tx_bufor[i] = 0;
 }
 //--------------------------------------------------------------
-ISR(USART_UDRE_vect)
+uint8_t volatile data_to_send = 0;
+uint8_t can_send(void)
 {
-	
-	if(usart_bufor[usart_bufor_ind]!= 0)
-	{
-		UDR0 = usart_bufor[usart_bufor_ind++];
-	}
-	else
-	{
-		clear_buffer();
-		usart_bufor_ind = 0;
-		UCSR0B &= ~(1<<UDRIE0);												//wy³¹cz przerwania pustego bufora nadawania
-	}
+	return ((UCSR0A & (1<<UDRE0)) && !data_to_send);
 }
 //--------------------------------------------------------------
-void send_buffer(void)
-{
-	UCSR0B |= (1<<UDRIE0);
-}
-//--------------------------------------------------------------
-//--------------------------------------------------------------
-
 char* cp_to_buffer(char *s1, const char *s2)
 {
 	char *s = s1;
 	while ((*s++ = *s2++) != 0);
 	return (s1);
 }
-
-int main(void)
+//--------------------------------------------------------------
+void send_text(char *s, uint8_t length)
 {
-	clear_buffer();
-	
-	DDRB |= _BV(DDB0);														// set out PB0 (for diode)
-	
-	usart_inicjuj();														// initialize USART (RS-232)
-	
-	sei();																	// Enables interrupts
-	
-	while(1)
+	if (can_send())
 	{
-		if (can_send())
-		{
-			cp_to_buffer(usart_bufor, "To jest test \r\n");
-		}
-		PORTB ^= _BV(PB0);
-		_delay_ms(1000);
+		cp_to_buffer(usart_tx_bufor, s);
+		send_buffer(length);
 	}
 }
+//--------------------------------------------------------------
+//--------------------------------------------------------------
+ISR(USART_UDRE_vect)
+{
+	if(usart_tx_bufor_ind < TX_BUFFER_SIZE && data_to_send > 0)
+	{
+		UDR0 = usart_tx_bufor[usart_tx_bufor_ind++];
+		data_to_send--;
+	}
+	else
+	{
+		usart_tx_bufor_ind = 0;
+		UCSR0B &= ~(1<<UDRIE0);												//wy³¹cz przerwania pustego bufora nadawania
+		data_to_send = 0;
+	}
+}
+//--------------------------------------------------------------
+void send_buffer(uint8_t byte_to_send)
+{
+	data_to_send = byte_to_send;
+	UCSR0B |= (1<<UDRIE0);
+}
+//--------------------------------------------------------------
+//--------------------------------------------------------------
+//--------------------------------------------------------------
+uint8_t recive_counter = 0;
+ISR(USART_RX_vect)
+{
+	usart_rx_bufor[usart_rx_bufor_ind++] = UDR0;
+	recive_counter++;
+	
+	if(recive_counter == 1)
+	{
+		reset_timer0();
+		enable_timer0();
+	}
+	else if(recive_counter<3)
+	{
+		reset_timer0();
+	}
+	else																// success, received 3 byte
+	{
+		disable_timer0();
+		recive_counter = 0;
+		PORTB ^= _BV(PB0);
+	}
+}
+//--------------------------------------------------------------
+void init_timer0(void)
+{
+	TCCR0A |= (1<<WGM01);													// CTC Mode
+	OCR0A = 39;																// TOP Value
+	TIMSK0 |= (1<<OCIE0A);													// compare match interrupt enable
+}
+//--------------------------------------------------------------
+void enable_timer0(void)
+{
+	TCCR0B |= (1 << CS02) | (1 << CS00);									// Prescaler
+}
+//--------------------------------------------------------------
+void disable_timer0(void)
+{
+	TCCR0B &= ~((1 << CS02) | (1 << CS01) | (1 << CS00));					// Prescaler
+}
+//--------------------------------------------------------------
+void reset_timer0(void)
+{
+	TCNT0 = 0;																// Reset counter
+}
+//--------------------------------------------------------------
+ISR (TIMER0_COMPA_vect)
+{
+	disable_timer0();
+	recive_counter = 0;
+}
+//--------------------------------------------------------------
+

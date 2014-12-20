@@ -27,6 +27,36 @@ int main(void)
 	while(1)
 	{
 		
+		
+		if (usart_rx_bufor_ind >= 3											// great or equal 3 because packet always have address, length and command
+		&& usart_rx_bufor[MSG_ADDRESS] == MY_ADDRESS
+		&& usart_rx_bufor[MSG_DATA_LENGTH] + 4 == usart_rx_bufor_ind		// check if it is end
+		)																	//(End is when usart_rx_bufor_ind is equals 4(addr, cmd, length, crc) + usart_rx_bufor_ind[1](length of data field))
+		{
+			
+			switch (usart_rx_bufor[MSG_COMMAND])
+			{
+				case CMD_ENABLE_LED0:
+				//--------------------------------------------------------------
+				PORTB |= (_BV(PB0));
+				//--------------------------------------------------------------
+				break;
+				case CMD_DISABLE_LED0:
+				//--------------------------------------------------------------
+				PORTB &= ~(_BV(PB0));
+				//--------------------------------------------------------------
+				break;
+				case CMD_TOGLE_LED0:
+				//--------------------------------------------------------------
+				PORTB ^= (_BV(PB0));
+				//--------------------------------------------------------------
+				break;
+				default:
+				/* UNKNOWN */
+				break;
+			}
+			usart_rx_bufor_ind = 0;
+		}
 	}
 }
 //--------------------------------------------------------------
@@ -124,7 +154,6 @@ ISR(USART_RX_vect)
 	{
 		disable_timer0();
 		recive_counter = 0;
-		PORTB ^= _BV(PB0);
 	}
 }
 //--------------------------------------------------------------

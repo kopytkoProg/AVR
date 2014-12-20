@@ -12,6 +12,28 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 
+
+//=================================================================================================================================
+#define MY_ADDRESS 10
+#define MASTER_ADDRESS 1
+
+// COMMANDS :
+
+#define CMD_ENABLE_LED0 1		// No data
+#define CMD_DISABLE_LED0 2		// No data
+#define CMD_TOGLE_LED0 3		// No data
+
+// Fields of message
+
+#define MSG_ADDRESS 0
+#define MSG_COMMAND 1
+#define MSG_DATA_LENGTH 2
+//#define MSG_CRC 
+//=================================================================================================================================
+
+
+
+
 //definiowanie parametrów transmisji za pomoc¹ makr zawartych w pliku
 //nag³ówkowym setbaud.h. Je¿eli wybierzesz prêdkoœæ, która nie bêdzie
 //mo¿liwa do realizacji otrzymasz ostrze¿enie:
@@ -40,3 +62,6 @@ char usart_tx_bufor[TX_BUFFER_SIZE];										//bufor nadawania
 
 volatile unsigned int usart_rx_bufor_ind;									//indeks bufora nadawania
 char usart_rx_bufor[RX_BUFFER_SIZE];										//bufor nadawania
+
+
+

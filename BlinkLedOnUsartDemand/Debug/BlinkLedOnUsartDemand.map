@@ -21,9 +21,9 @@ Discarded input sections
  .text          0x00000000        0x0 MyBus/MyBus.o
  .bss           0x00000000        0x0 MyBus/MyBus.o
  .text.clear_tx_buffer
-                0x00000000       0x12 MyBus/MyBus.o
+                0x00000000       0x16 MyBus/MyBus.o
  .text.cp_to_buffer
-                0x00000000       0x10 MyBus/MyBus.o
+                0x00000000       0x1a MyBus/MyBus.o
  .text.send_text
                 0x00000000       0x24 MyBus/MyBus.o
  .text.reset_timer0
@@ -179,7 +179,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x3a0
+.text           0x00000000      0x3e6
  *(.vectors)
  .vectors       0x00000000       0x34 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr4/crtm88.o
                 0x00000000                __vector_default
@@ -259,48 +259,48 @@ END GROUP
                 0x00000054                __vector_20
                 0x00000056                . = ALIGN (0x2)
  *(.text.*)
- .text.main     0x00000056       0xcc BlinkLedOnUsartDemand.o
+ .text.main     0x00000056      0x10e BlinkLedOnUsartDemand.o
                 0x00000056                main
- .text.crc      0x00000122       0x1e MyBus/MyBus.o
-                0x00000122                crc
+ .text.crc      0x00000164       0x1e MyBus/MyBus.o
+                0x00000164                crc
  .text.usart_inicjuj
-                0x00000140       0x22 MyBus/MyBus.o
-                0x00000140                usart_inicjuj
+                0x00000182       0x22 MyBus/MyBus.o
+                0x00000182                usart_inicjuj
  .text.can_send
-                0x00000162       0x1a MyBus/MyBus.o
-                0x00000162                can_send
+                0x000001a4       0x1a MyBus/MyBus.o
+                0x000001a4                can_send
  .text.__vector_19
-                0x0000017c       0x84 MyBus/MyBus.o
-                0x0000017c                __vector_19
+                0x000001be       0x84 MyBus/MyBus.o
+                0x000001be                __vector_19
  .text.send_buffer
-                0x00000200       0x10 MyBus/MyBus.o
-                0x00000200                send_buffer
+                0x00000242       0x10 MyBus/MyBus.o
+                0x00000242                send_buffer
  .text.send_data
-                0x00000210       0x3e MyBus/MyBus.o
-                0x00000210                send_data
+                0x00000252       0x3c MyBus/MyBus.o
+                0x00000252                send_data
  .text.init_timer0
-                0x0000024e       0x16 MyBus/MyBus.o
-                0x0000024e                init_timer0
+                0x0000028e       0x16 MyBus/MyBus.o
+                0x0000028e                init_timer0
  .text.init_my_buss
-                0x00000264        0x6 MyBus/MyBus.o
-                0x00000264                init_my_buss
+                0x000002a4        0x6 MyBus/MyBus.o
+                0x000002a4                init_my_buss
  .text.enable_timer0
-                0x0000026a        0x8 MyBus/MyBus.o
-                0x0000026a                enable_timer0
+                0x000002aa        0x8 MyBus/MyBus.o
+                0x000002aa                enable_timer0
  .text.disable_timer0
-                0x00000272        0x8 MyBus/MyBus.o
-                0x00000272                disable_timer0
+                0x000002b2        0x8 MyBus/MyBus.o
+                0x000002b2                disable_timer0
  .text.__vector_18
-                0x0000027a       0xd0 MyBus/MyBus.o
-                0x0000027a                __vector_18
+                0x000002ba       0xd6 MyBus/MyBus.o
+                0x000002ba                __vector_18
  .text.__vector_14
-                0x0000034a       0x52 MyBus/MyBus.o
-                0x0000034a                __vector_14
-                0x0000039c                . = ALIGN (0x2)
+                0x00000390       0x52 MyBus/MyBus.o
+                0x00000390                __vector_14
+                0x000003e2                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000039c        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_exit.o)
-                0x0000039c                _exit
-                0x0000039c                exit
+ .fini9         0x000003e2        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_exit.o)
+                0x000003e2                _exit
+                0x000003e2                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -319,11 +319,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000039c        0x4 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_exit.o)
+ .fini0         0x000003e2        0x4 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr4\libgcc.a(_exit.o)
  *(.fini0)
-                0x000003a0                _etext = .
+                0x000003e6                _etext = .
 
-.data           0x00800100        0x0 load address 0x000003a0
+.data           0x00800100        0x0 load address 0x000003e6
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr4/crtm88.o
@@ -357,8 +357,8 @@ END GROUP
                 0x00800124                usart_tx_bufor_ind
                 0x00800126                usart_rx_bufor
                 0x00800146                PROVIDE (__bss_end, .)
-                0x000003a0                __data_load_start = LOADADDR (.data)
-                0x000003a0                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000003e6                __data_load_start = LOADADDR (.data)
+                0x000003e6                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800146        0x0
                 0x00800146                PROVIDE (__noinit_start, .)
@@ -436,21 +436,21 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0x5ef
+.debug_info     0x00000000      0x62a
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x192 BlinkLedOnUsartDemand.o
- .debug_info    0x00000192      0x45d MyBus/MyBus.o
+ .debug_info    0x00000000      0x1a1 BlinkLedOnUsartDemand.o
+ .debug_info    0x000001a1      0x489 MyBus/MyBus.o
 
-.debug_abbrev   0x00000000      0x2e3
+.debug_abbrev   0x00000000      0x2f0
  *(.debug_abbrev)
  .debug_abbrev  0x00000000       0xf5 BlinkLedOnUsartDemand.o
- .debug_abbrev  0x000000f5      0x1ee MyBus/MyBus.o
+ .debug_abbrev  0x000000f5      0x1fb MyBus/MyBus.o
 
-.debug_line     0x00000000      0x30b
+.debug_line     0x00000000      0x31b
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000       0xee BlinkLedOnUsartDemand.o
- .debug_line    0x000000ee      0x21d MyBus/MyBus.o
- .debug_line    0x0000030b        0x0 USART/USART.o
+ .debug_line    0x00000000       0xf6 BlinkLedOnUsartDemand.o
+ .debug_line    0x000000f6      0x225 MyBus/MyBus.o
+ .debug_line    0x0000031b        0x0 USART/USART.o
 
 .debug_frame    0x00000000      0x210
  *(.debug_frame)
@@ -465,9 +465,9 @@ END GROUP
                                 0x2ad (size before relaxing)
  .debug_str     0x00000296        0x0 USART/USART.o
 
-.debug_loc      0x00000000      0x4fb
+.debug_loc      0x00000000      0x51c
  *(.debug_loc)
- .debug_loc     0x00000000      0x4fb MyBus/MyBus.o
+ .debug_loc     0x00000000      0x51c MyBus/MyBus.o
 
 .debug_macinfo
  *(.debug_macinfo)

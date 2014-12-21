@@ -9,7 +9,7 @@
 
 void clear_tx_buffer(void);
 uint8_t can_send(void);
-char* cp_to_buffer(char *s1, const char *s2);
+volatile char* cp_to_buffer(volatile char *s1, const char *s2);
 void send_text(char *s, uint8_t length);
 void usart_inicjuj(void);
 void send_buffer(uint8_t byte_to_send);
@@ -27,7 +27,7 @@ void init_my_buss(void)
 }
 
 
-uint8_t crc (char *s, uint8_t length)
+uint8_t crc (volatile char *s, uint8_t length)
 {
 	uint8_t crc = 0;
 	for (uint8_t i = 0; i < length; i++) crc += *(s+i);
@@ -67,9 +67,9 @@ uint8_t can_send(void)
 	return ((UCSR0A & (1<<UDRE0)) && !data_to_send);
 }
 //--------------------------------------------------------------
-char* cp_to_buffer(char *s1, const char *s2)
+volatile char* cp_to_buffer(volatile char *s1, const char *s2)
 {
-	char *s = s1;
+	volatile char *s = s1;
 	while ((*s++ = *s2++) != 0);
 	return (s1);
 }
@@ -82,9 +82,10 @@ void send_text(char *s, uint8_t length)
 		send_buffer(length);
 	}
 }
-void send_data (char *s, uint8_t length)
+void send_data (volatile char *d, uint8_t length)
 {
 	if (can_send()){
+		volatile char *s = d;
 		for (uint8_t i = 0; i < length; i++) usart_tx_bufor[i] = *(s+i);
 		send_buffer(length);
 	}

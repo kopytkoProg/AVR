@@ -35,22 +35,23 @@
 
 // =================== Fields of message ===================
 
-#define MSG_ADDRESS 0
-#define MSG_COMMAND 1
-#define MSG_DATA_LENGTH 2
+#define MSG_ADDRESS			0
+#define MSG_COMMAND			1
+#define MSG_DATA_LENGTH		2												// Data length field		
+#define MSG_DATA_START		3												// Place where the data start 
 
 // =========================================================
 
 volatile unsigned int usart_tx_bufor_ind;									//indeks bufora nadawania
-char usart_tx_bufor[TX_BUFFER_SIZE];										//bufor nadawania
+char volatile usart_tx_bufor[TX_BUFFER_SIZE];								//bufor nadawania
 
 volatile unsigned int usart_rx_bufor_ind;									//indeks bufora nadawania
-char usart_rx_bufor[RX_BUFFER_SIZE];										//bufor nadawania
+char volatile usart_rx_bufor[RX_BUFFER_SIZE];								//bufor nadawania
 
 
-void send_data (char *s, uint8_t length);
+void send_data (volatile char *s, uint8_t length);
 void init_my_buss(void);
-uint8_t crc (char *s, uint8_t length);
+uint8_t crc (volatile char *s, uint8_t length);
 
 
 #endif /* MYBUS_H_ */

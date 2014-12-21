@@ -1,5 +1,6 @@
 BlinkLedOnUsartDemand.d BlinkLedOnUsartDemand.o: \
  .././BlinkLedOnUsartDemand.c .././BlinkLedOnUsartDemand.h \
+ .././MyBus/MyBus.h \
  d:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1056\avr8-gnu-toolchain\avr\include\avr\io.h \
  d:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1056\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  d:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1056\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -22,6 +23,8 @@ BlinkLedOnUsartDemand.d BlinkLedOnUsartDemand.o: \
  d:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1056\avr8-gnu-toolchain\avr\include\util\setbaud.h
 
 .././BlinkLedOnUsartDemand.h:
+
+.././MyBus/MyBus.h:
 
 d:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1056\avr8-gnu-toolchain\avr\include\avr\io.h:
 

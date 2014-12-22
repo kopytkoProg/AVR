@@ -157,7 +157,7 @@ ISR(USART_RX_vect)
 void init_timer0(void)
 {
 	TCCR0A |= (1<<WGM01);													// CTC Mode
-	OCR0A = 39;																// TOP Value
+	OCR0A = 255;															// TOP Value
 	TIMSK0 |= (1<<OCIE0A);													// compare match interrupt enable
 }
 //--------------------------------------------------------------
